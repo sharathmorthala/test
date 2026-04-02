@@ -12,6 +12,7 @@ public interface GoogleBooksClient {
     GoogleBooksResponse getBooks(
             @RequestParam("maxResults") int maxResults,
             @RequestParam("orderBy") String orderBy,
-            @RequestParam("q") String query
+            @RequestParam("q") String query,
+            @RequestParam("key") String apiKey
     );
 }

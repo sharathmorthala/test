@@ -6,6 +6,7 @@ import com.example.test.controllers.model.GoogleBooksResponse;
 import com.example.test.controllers.model.Item;
 import com.example.test.entity.Book;
 import com.example.test.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +17,9 @@ public class BookService {
 
     private BookRepository bookRepository;
     private GoogleBooksClient googleBooksClient;
+
+    @Value("${google.books.api-key}")
+    private String googleBooksAPIKey;
 
     public BookService(BookRepository bookRepository, GoogleBooksClient googleBooksClient) {
         this.bookRepository = bookRepository;
@@ -37,7 +41,7 @@ public class BookService {
     //TODO 3 use feign client bookAdapter to retrieve books
     public List<BookVO> retrieveBookFromGoogle() {
         GoogleBooksResponse response = googleBooksClient.getBooks(5, "relevance",
-                "Nathan Carlin");
+                "Nathan Carlin", googleBooksAPIKey);
 
         List<BookVO> result = new ArrayList<>();
 
