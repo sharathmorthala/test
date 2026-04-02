@@ -12,4 +12,4 @@ spring:
 
 google:
   books:
-    api-key: AIzaSyCOYwDVTA_ZzpSZKNKBUSYfrs5qgaY3_uw
+    api-key: ${GOOGLE_BOOKS_API_KEY}
